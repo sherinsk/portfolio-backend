@@ -5,6 +5,7 @@ const multer = require('multer');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const cloudinary = require('cloudinary').v2;
 const path = require('path');
+const nodemailer = require("nodemailer");
 
 
 cloudinary.config({
@@ -22,6 +23,16 @@ const storage = new CloudinaryStorage({
       folder: 'projects', // Cloudinary folder name
       allowed_formats: ['jpg', 'jpeg', 'png'], // Allowed file formats
       transformation: [{ width: 500, height: 500, crop: 'limit' }]
+    },
+  });
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: "sherinsk.backenddev@gmail.com",
+      pass: "gphl ubcb xolk btwt",
     },
   });
 
@@ -95,6 +106,34 @@ app.post('/project', upload.single('image'), async (req, res) => {
       res.status(500).json({ error: 'An error occurred while deleting the project' });
     }
   });
+
+  app.post('/sendemail',async (req, res)=>{
+    const { email,name,message } = req.body;
+    
+    
+    try {
+  
+      await transporter.sendMail({
+        from: "sherinsk.backenddev@gmail.com",
+        to: email,
+        subject: "Thanks",
+        text: "Thanks for contacting Sherin",
+      });
+
+      await transporter.sendMail({
+        from: "sherinsk.backenddev@gmail.com",
+        to: "sherinsk007@gmail.com",
+        subject: "A new message",
+        text: `name : ${name},message : ${message}`,
+      });
+  
+      res.status(200).json({ status:true });
+    
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      res.status(500).json({ error: "Failed to send OTP" });
+    }
+  })
 
 // Start the server
 app.listen(7000, () => {

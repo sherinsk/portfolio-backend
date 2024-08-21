@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const { PrismaClient } = require('@prisma/client');
 const multer = require('multer');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const cloudinary = require('cloudinary').v2;
 const path = require('path');
+
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -28,8 +30,11 @@ const upload = multer({ storage });
 // Initialize Express
 const app = express();
 
+app.use(cors());
+
 // Middleware to parse JSON
 app.use(express.json());
+
 
 // Route to get projects
 app.get('/projects', async (req, res) => {

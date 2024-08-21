@@ -4,19 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "dev": "node index.js",
-      "build": "prisma generate && node index.js",
-      "start": "node index.js",
-      "migrate:dev": "prisma migrate dev",
-      "migrate:deploy": "prisma migrate deploy",
-      "postinstall": "prisma generate"
-    },
+    "dev": "node index.js",
+    "build": "prisma generate && node index.js",
+    "start": "node index.js",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "postinstall": "prisma generate"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.18.0",
     "cloudinary": "^1.41.3",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",

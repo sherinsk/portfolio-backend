@@ -5,6 +5,7 @@ const multer = require('multer');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const cloudinary = require('cloudinary').v2;
 const path = require('path');
+const ejs = require('ejs');
 const nodemailer = require("nodemailer");
 
 
@@ -112,19 +113,25 @@ app.post('/project', upload.single('image'), async (req, res) => {
     
     
     try {
+
+      const welcomeHtml = await ejs.renderFile(path.join(__dirname, '..', 'views', 'emails', 'welcome.ejs'), { name });
+      const notificationHtml = await ejs.renderFile(
+        path.join(__dirname, '..', 'views', 'emails', 'notification.ejs'),
+        { name, message }
+      );
   
       await transporter.sendMail({
         from: "sherinsk.backenddev@gmail.com",
         to: email,
-        subject: "Thanks",
-        text: "Thanks for contacting Sherin",
+        subject: "Thanks from Sherin",
+        html: welcomeHtml,
       });
 
       await transporter.sendMail({
         from: "sherinsk.backenddev@gmail.com",
         to: "sherinsk007@gmail.com",
         subject: "A new message",
-        text: `name : ${name},message : ${message}`,
+        html:notificationHtml,
       });
   
       res.status(200).json({ status:true });

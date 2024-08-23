@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Message Notification</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
+        }
+        .footer a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>New Message Received</h1>
+        <p>Hi there,</p>
+        <p>You have received a new message from <strong><%= name %></strong>.</p>
+        <div class="details">
+            <p><strong>Message:</strong></p>
+            <p><%= message %></p>
+        </div>
+        <div class="footer">
+            <p>If you have any questions or need further assistance, <a href="mailto:sherinsk.backenddev@gmail.com">contact us</a>.</p>
+            <p>&copy; 2024 Sherin's Services. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

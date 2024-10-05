@@ -33,7 +33,7 @@ const storage = new CloudinaryStorage({
     secure: true,
     auth: {
       user: "sherinsk.backenddev@gmail.com",
-      pass: "gphl ubcb xolk btwt",
+      pass: "jcjn gesr bjjy zzts",
     },
   });
 

@@ -32,8 +32,8 @@ const storage = new CloudinaryStorage({
     port: 465,
     secure: true,
     auth: {
-      user: "sherinsk.backenddev@gmail.com",
-      pass: "jcjn gesr bjjy zzts",
+      user: "sherinsk007@gmail.com",
+      pass: "ktec pkcm wpcb pupo",
     },
   });
 
